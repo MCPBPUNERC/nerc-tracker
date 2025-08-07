@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>NERC Dashboard</title></head>
+<body>
+    <h2>NERC One Stop Shop Tracker</h2>
+    <p><strong>Last Update:</strong> {{ last_update }}</p>
+    <p><a href="https://www.nerc.com/pa/Stand/AlignRep/One%20Stop%20Shop.xlsx" target="_blank">Download Current Excel File</a></p>
+
+    <h3>Change Log:</h3>
+    <ul>
+    {% for line in logs %}
+        <li>{{ line.strip() }}</li>
+    {% endfor %}
+    </ul>
+
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
