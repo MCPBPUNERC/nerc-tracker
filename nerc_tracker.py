@@ -9,8 +9,8 @@ URL = "https://www.nerc.com/pa/Stand/AlignRep/One%20Stop%20Shop.xlsx"
 HASH_FILE = "file_hash.txt"
 
 # Email setup
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_ADDRESS = os.getenv("NERCtrackingbot@gmail.com")
+EMAIL_PASSWORD = os.getenv("NERCbot2025")
 RECIPIENTS = ["mikep@mcphersonpower.com", "tommys@mcphersonpower.com"]
 
 def download_file():
