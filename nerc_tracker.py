@@ -11,7 +11,7 @@ HASH_FILE = "file_hash.txt"
 # Email setup
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-RECIPIENTS = ["mikep@mcphersonpower.com", "secondperson@example.com"]
+RECIPIENTS = ["mikep@mcphersonpower.com", "tommys@mcphersonpower.com"]
 
 def download_file():
     response = requests.get(URL)
