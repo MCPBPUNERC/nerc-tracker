@@ -11,7 +11,7 @@ CHANGE_LOG = "nerc-site/change_log.txt"
 
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-RECIPIENTS = ["mikep@mcphersonpower.com", "yourworkemail@yourcompany.com"]  # update as needed
+RECIPIENTS = ["mikep@mcphersonpower.com", "tommys@mcphersonpower.com"]  # update as needed
 
 def download_file():
     res = requests.get(FILE_URL)
