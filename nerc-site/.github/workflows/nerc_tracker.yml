@@ -1,0 +1,36 @@
+name: Check NERC File for Changes
+
+on:
+  schedule:
+    - cron: "0 13 * * *"  # every day at 8:00 AM CDT
+  workflow_dispatch:
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run change checker
+        run: python .github/scripts/check_nerc_change.py
+        env:
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
+      - name: Commit updated change_log.txt
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add nerc-site/change_log.txt
+          git commit -m "Update change log: $(date '+%Y-%m-%d')" || echo "No changes to commit"
+          git push
