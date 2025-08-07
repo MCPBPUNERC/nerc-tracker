@@ -1,0 +1,27 @@
+name: Daily Check for NERC Updates
+
+on:
+  schedule:
+    - cron: "0 13 * * *"  # runs daily at 8 AM CDT
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  check-nerc:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Run tracker
+      env:
+        EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      run: python nerc_tracker.py
